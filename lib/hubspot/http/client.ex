@@ -31,24 +31,24 @@ defmodule Hubspot.HTTP.Client do
     [{get_env(:hubspotex, :auth_method), get_env(:hubspotex, :auth_key)} | query]
   end
 
-  defp process_url(url = "http" <> _), do: url
-  defp process_url(endpoint) do
+  def process_url(url = "http" <> _), do: url
+  def process_url(endpoint) do
     get_env(:hubspotex, :base_url) <> endpoint
   end
 
-  defp process_request_options([]), do: []
-  defp process_request_options([params: _]=options), do: options
-  defp process_request_options(params) do
+  def process_request_options([]), do: []
+  def process_request_options([params: _]=options), do: options
+  def process_request_options(params) do
     [params: params]
   end
 
-  defp process_request_body(""), do: ""
-  defp process_request_body(body) do
+  def process_request_body(""), do: ""
+  def process_request_body(body) do
     body |> Poison.encode!
   end
 
-  defp process_response_body(""), do: nil
-  defp process_response_body(body) do
+  def process_response_body(""), do: nil
+  def process_response_body(body) do
     body |> Poison.decode!
   end
 end

@@ -10,7 +10,7 @@ defmodule Hubspot.Contacts do
 
       iex> Hubspot.Contacts.all([count: 10, vidOffset: 100])
       %Hubspot.HTTP.Request{endpoint: "/contacts/v1/lists/all/contacts/all",
-        method: :get, query: ["count": 10, "vidOffset": 100], body: ""}
+        method: :get, query: [count: 10, vidOffset: 100], body: ""}
   """
   @spec all(list) :: %Hubspot.HTTP.Request{}
   def all(params \\ []) do
@@ -71,9 +71,9 @@ defmodule Hubspot.Contacts do
   Get a contact matching the email.
 
   ## Example
-      iex> Hubspot.Contacts.create_or_update("test@hubspot.com", [properties: [name: "first_name", value: "Fred"]])
+      iex> Hubspot.Contacts.create_or_update("test@hubspot.com", %{properties: [%{property: "firstname", value: "Fred"}]})
       %Hubspot.HTTP.Request{endpoint: "/contacts/v1/contact/createOrUpdate/email/test@hubspot.com",
-        method: :post, query: [], body: [properties: [name: "first_name", value: "Fred"]]}
+        method: :post, query: [], body: %{properties: [%{property: "firstname", value: "Fred"}]}}
   """
   @spec create_or_update(String.t, list) :: %Hubspot.HTTP.Request{}
   def create_or_update(email, properties \\ "") do
