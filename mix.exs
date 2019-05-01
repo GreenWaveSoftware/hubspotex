@@ -3,8 +3,8 @@ defmodule Hubspot.Mixfile do
 
   def project do
     [app: :hubspotex,
-     version: "0.0.6",
-     elixir: "~> 1.2",
+     version: "0.0.7",
+     elixir: "~> 1.5",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      description: description(),
